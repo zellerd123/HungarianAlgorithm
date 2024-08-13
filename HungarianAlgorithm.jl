@@ -1,6 +1,6 @@
 using JuMP, HiGHS
 using Pkg
-#DOUG AND CHURCH
+
 function maxMatchingLP(W)
     n = size(W, 1)
     model = Model(HiGHS.Optimizer)
