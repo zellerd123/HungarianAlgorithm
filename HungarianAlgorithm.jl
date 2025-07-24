@@ -57,7 +57,7 @@ function create_equality_graph(matrix, matchings)
     
     return result_matrix
 end
-function sixthtryisthecharm(W)
+function maxMatchingHungarian(W)
     matchings = Dict()
     first_equality_graph = create_equality_graph(W, matchings)
     matching_checker = falses(size(W, 1))
@@ -147,14 +147,14 @@ function sixthtryisthecharm(W)
                 end
             end
             if passedBy
-                #println("Made it here")
+                #println("Program Reached pass-by")
             else
                 return final_graph
             end
         else
             
             
-           # println("Im in the else")
+  
 
             for b in competing_buyers
                # println("This is the b: $b")
@@ -170,7 +170,7 @@ function sixthtryisthecharm(W)
 
                 tempW = copy(convert(Matrix{Float64}, W))
                 tempW[b, seller_index] = -Inf
-                #println("This is the value at this point $tempW")
+                #println("This is the value before findmax $tempW")
                 second_highest_value, second_highest_seller_index = findmax(tempW[b,:])
                 #println("This is max value and index for findmax temp $second_highest_value, $second_highest_seller_index")
                 second_highest_value = Int(second_highest_value)  
@@ -219,14 +219,11 @@ function sixthtryisthecharm(W)
 
     end
     
-    #println("reached the end")
     return final_graph
 end
  
 
-function maxMatchingHungarian(W)
-    sixthtryisthecharm(W)
-end
+
 
 
 # Example usage
