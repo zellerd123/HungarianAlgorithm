@@ -1,6 +1,19 @@
-# Hungarian Algorithm Implementation
+## Hungarian Algorithm Implementation
 
-This repository contains an implementation of the Hungarian algorithm for solving the assignment problem. The implementation leverages the JuMP modeling package and the HiGHS optimizer in Julia. The Hungarian algorithm, also known as the Kuhn-Munkres algorithm, finds the optimal assignment for a given cost matrix, where the goal is to minimize or maximize the total cost of assigning jobs to workers.
+The Hungarian algorithm, also known as the Kuhn–Munkres algorithm, finds the optimal assignment for a given cost (or weight) matrix, maximizing or minimizing the total match value.
+
+## Novel Improvements
+
+- **Matrix‑Centric Equality‑Graph Regeneration:** Rebuilds the equality graph each iteration from a single matchings Dict, eliminating separate buyer/seller label arrays and slack data structures.
+
+- **Greedy Max‑Edge Selection & Bulk Slack Reduction:** Always picks the largest edge in the equality graph. Conflicts resolve by a single vectorized column subtraction (minimal slack) instead of intricate label updates and slack arrays.
+
+- **Second‑Best Candidate Caching** Stores the runner‑up edge’s value and indices to avoid repeated global scans when selecting the next max edge, dramatically reducing search overhead.
+
+- **Unified Matchings Dictionary** Tracks both primal matchings (buyer→seller assignments) and dual information (seller slack) in one self‑contained structure, simplifying data flow.
+
+- **Direct Perfect‑Matching Check:** Uses quick row/column count checks on the equality graph to detect completion in  time, replacing augmenting‑path BFS/DFS.
+
 
 ## Features
 
