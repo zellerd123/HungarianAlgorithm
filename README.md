@@ -27,8 +27,6 @@ This function creates an equality graph based on the current matchings and the w
 
 The `maxMatchingHungarian` function implements the custom Hungarian algorithm, using iterative steps to find the optimal assignment.
 
-## `sixthtryisthecharm` Function
-
 This function iteratively refines the matching process to find the optimal assignment of buyers to sellers based on the given weight matrix. Below is a detailed breakdown of how this function works:
 
 ### 1. Initialization
